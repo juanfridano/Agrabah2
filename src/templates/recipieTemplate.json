@@ -1,0 +1,30 @@
+﻿{
+  "id": 1,
+  "name": "Empanadas",
+  "description": "Lorem Ipsum",
+  "type": "meal",
+  "course": "",
+  "categories": [],
+  "ingredients": [
+    {
+      "id": 1,
+      "name": "",
+      "quantity": 2.0,
+      "unit": ""
+    },
+    {
+      "id": 1,
+      "name": "",
+      "quantity": 2.0,
+      "unit": ""
+    },
+    {
+      "id": 1,
+      "name": "",
+      "quantity": 2.0,
+      "unit": ""
+    }
+  ],
+  "preparation_steps": [ "", "" ]
+
+}
