@@ -27,7 +27,31 @@
 
 <div class="container">
   <h3>Recipie</h3>
-  <p>Id: {{recipie?.id}}</p>
-  <p>Name: {{recipie?.name}}</p>
-  <p>Description: {{recipie?.description}}</p>
-</div>
+  <p>Id: {{recipe?.id}}</p>
+  <p>Name: {{recipe?.name}}</p>
+  <p>Description: {{recipe?.description}}</p>
+
+  <!--<div *ngIf="recipe">-->
+  <h3>Recipie Details with Observable </h3>
+  <div>
+    <div>
+      <label>Id: </label>
+      <input [(ngModel)]="recipe.id" />
+    </div>
+    <div>
+      <label>Name: </label>
+      <input [(ngModel)]="recipe.name" />
+    </div>
+    <div>
+      <label>Steps: </label>
+      <input [(ngModel)]="recipe.steps" />
+    </div>
+    <div>
+      <button (click)="addRecipe()">Add</button>
+    </div>
+  </div>
+  <div *ngIf="recipeName" [ngClass] = "'success'"> {{bookRecipe}} Added. </div>
+  <div *ngIf="errorMessage" [ngClass] = "'error'"> {{errorMessage}} </div>
+
+  </div>
+<!--</div>-->

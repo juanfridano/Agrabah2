@@ -1,12 +1,12 @@
 ﻿import { Component } from '@angular/core';
-import { Recipie } from '../model/recipie';
+import { Recipe } from '../model/recipe';
 
 @Component({
-  selector: 'recipie',
+  selector: 'recipe',
   template:'<h1> {{title}}</h1>'
 })
 
-export class RecipieComponent {
+export class RecipeComponent {
   title = 'app';
 
 }

@@ -1,19 +1,21 @@
 ﻿import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
-import { RecipieComponent } from './components/recipie.component';
+import { RecipeComponent } from './components/recipe.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RecipieComponent    
+    RecipeComponent
   ],
   imports: [
-      BrowserModule,
-      HttpModule
+    BrowserModule,
+    HttpModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,21 +1,24 @@
 ﻿import { Component } from '@angular/core';
-import { Recipie } from './model/recipie';
+import { Recipe } from './model/recipe';
 
-import { RecipiesService } from './services/recipies.service';
+import { RecipesService } from './services/recipes.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [RecipiesService]
+  providers: [RecipesService]
 })
 
 export class AppComponent {
-  title = 'app';
-  recipie: Recipie;
-  constructor(private recipiesService: RecipiesService) {
-      this.recipiesService.getRecipie().subscribe(recipie => { 
-      this.recipie = recipie;
+  recipe: Recipe ;
+  constructor(private recipesService: RecipesService) {
+    this.recipe = new Recipe();
+    this.recipesService.getRecipe().then(result => {
+    this.recipe = result;
   });
+  }
+  addRecipe(): void {
+    this.recipesService.addRecipe(this.recipe);
   }
 }
