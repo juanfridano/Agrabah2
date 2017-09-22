@@ -17,10 +17,10 @@ The styling for this application is based on [Twitter Bootstrap](https://getboot
 
 The RestAPI is a [SpringBoot](https://spring.io/) Application
 
-###Persistence
+### Persistence
 
 For the Persistence JPA and Hibernate are being used, and stored on a PostregeSQL Database
 
-###Deployment
+### Deployment
 
 The API (Java Application and DB) is deploy in an Openshift Gear, [Application](http://agrabah2-pallares.rhcloud.com/)
