@@ -5,17 +5,27 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { RecipeComponent } from './components/recipe.component';
+import {RecipePreviewComponent} from './components/recipe-preview.component';
+import {RecipeEditComponent} from './components/recipe-edit.component';
+import {routing} from './app.routing';
+import {RecipeCreateComponent} from './components/recipe-create.component';
+import {RecipeAllComponent} from "./components/recipe-all.component";
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    RecipeComponent
+    RecipeAllComponent,
+    RecipeComponent,
+    RecipePreviewComponent,
+    RecipeCreateComponent,
+    RecipeEditComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    FormsModule
+    FormsModule,
+    routing
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -3,10 +3,10 @@ import { Recipe } from '../model/recipe';
 import {Observable} from "rxjs/Observable";
 
 @Component({
-  selector: 'recipe',
-  templateUrl: './recipe.component.html'
+  selector: 'recipe-preview',
+  templateUrl: './recipe-preview.component.html'
 })
 
-export class RecipeComponent {
+export class RecipePreviewComponent {
   @Input() recipe: Recipe;
 }

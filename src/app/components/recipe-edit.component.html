@@ -1,0 +1,40 @@
+﻿<div>
+  <label>Name: </label>
+  <input [(ngModel)]="recipe.name" />
+</div>
+<div>
+  <label>Ingredients: </label>
+   <ol>
+    <li *ngFor="let ingredient of recipe.ingredients" >
+      {{ingredient.item.name}} | {{ingredient.quantity}} | {{ingredient.unit}}
+    </li>
+  </ol>
+  <select [(ngModel)]="selectedItem">
+    <option *ngFor="let item of itemList" [ngValue]="item">{{ item.name }}</option>
+  </select>
+<!--  <input #newItem
+          (keyup.enter)="addNewItem(newItem.value)"
+          (blur)="addNewItem(newItem.value); newItem.value=''">-->
+  <input [(ngModel)]="newIngredient.quantity">
+  <input [(ngModel)]="newIngredient.unit">
+
+  <button (click)="addIngredient()">Add</button>
+</div>
+<div>
+  <label>Steps: </label>
+  <ol>
+    <li *ngFor="let step of recipe.steps">{{step}}</li>
+  </ol>
+  <input #newStep
+         (keyup.enter)="addStep(newStep.value)"
+         (blur)="addStep(newStep.value); newStep.value='' ">
+
+  <button (click)="addStep(newStep.value)">Add</button>
+</div>
+<div>
+  <label>Category: </label>
+  <input [(ngModel)]="recipe.category" />
+</div>
+<div>
+  <button (click)="addRecipe(recipe)">Add</button>
+</div>

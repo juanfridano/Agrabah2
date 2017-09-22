@@ -1,6 +1,9 @@
+import {Item} from './item';
+
 export class Ingredient {
   id: number;
-  name: String;
+  item: Item;
+  quantity: number;
   unit: String;
   constructor() {
 

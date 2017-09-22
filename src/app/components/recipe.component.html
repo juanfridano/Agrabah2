@@ -1,0 +1,24 @@
+﻿<div>
+  <label>Name: </label>
+  <p>{{ recipe.name }}</p>
+</div>
+<div>
+  <label>Category: </label>
+  <p>{{ recipe.category }}</p>
+</div>
+<div>
+  <label>Description: </label>
+  <p>{{ recipe.description }}</p>
+</div>
+<div>
+  <label>Ingredients: </label>
+  <ol>
+    <li *ngFor="let ingredient of recipe.ingredients">{{step}}</li>
+  </ol>
+</div>
+<div>
+  <label>Steps: </label>
+  <ol>
+    <li *ngFor="let step of recipe.steps">{{step}}</li>
+  </ol>
+</div>

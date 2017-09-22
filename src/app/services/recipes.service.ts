@@ -7,40 +7,42 @@ import {Recipe} from '../model/recipe';
 
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
+import {Item} from "../model/item";
 
 
 @Injectable()
 export class RecipesService {
-  url= 'http://localhost:8082/postr';
-    constructor(private http: Http) {
-
-    }
-
-    getRecipe(): Promise<Recipe> {
-        return this.http.get('http://localhost:8082')
-            .map((res) => res.json()).toPromise()
-          .catch(this.handleErrorPromise);
-    }
-
-   addRecipe(recipe: Recipe): Promise<Recipe> {
-    const headers = new Headers({ 'Content-Type': 'application/json' });
-    headers.set('Access-Control-Allow-Origin', '*');
-    const options = new RequestOptions({ headers: headers });
-    return this.http.post(this.url, recipe, options).toPromise()
-      .then(this.extractData)
-      .catch(this.handleErrorPromise);
+  constructor(private http: Http) {
   }
 
-  private extractData(res: Response) {
-    const body = res.json();
-    return body.data || {};
+  getRecipes(): Observable<Recipe[]> {
+    return this.http.get('/api/recipes/all')
+      .map((res: Response) => res.json());
+    }
+
+  getItems(): Observable<Item[]> {
+    return this.http.get('/api/items/all')
+      .map((res: Response) => res.json());
   }
+
+  addRecipe(recipe: Recipe) {
+    const headers = new Headers({'Content-Type': 'application/json'});
+    const options = new RequestOptions({headers: headers});
+    const body = JSON.stringify(recipe);
+    console.log(body);
+    return this.http.post('/api/recipes/create', body, options).map((res: Response) => res.json());
+  }
+
+  addItem(item: Item) {
+    const headers = new Headers({'Content-Type': 'application/json'});
+    const options = new RequestOptions({headers: headers});
+    const body = JSON.stringify(item);
+    console.log(body);
+    return this.http.post('/api/items/create', body, options).map((res: Response) => res.json());
+  }
+
   private handleErrorObservable (error: Response | any) {
     console.error(error.message || error);
     return Observable.throw(error.message || error);
-  }
-  private handleErrorPromise (error: Response | any) {
-    console.error(error.message || error);
-    return Promise.reject(error.message || error);
   }
 }
