@@ -13,7 +13,8 @@
 <div>
   <label>Ingredients: </label>
   <ol>
-    <li *ngFor="let ingredient of recipe.ingredients">{{step}}</li>
+    <li *ngFor="let ingredient of recipe.ingredients">
+      {{ingredient.item.name}} : {{ ingredient.quantity }} {{ ingredient.unit }} </li>
   </ol>
 </div>
 <div>
@@ -22,3 +23,5 @@
     <li *ngFor="let step of recipe.steps">{{step}}</li>
   </ol>
 </div>
+
+<a [routerLink]="['/recipe/edit', id]">Edit Recipe</a>

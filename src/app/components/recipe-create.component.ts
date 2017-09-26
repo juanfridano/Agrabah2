@@ -16,11 +16,13 @@ export class RecipeCreateComponent {
   @Input() newIngredient: Ingredient;
   itemList: Array<Item>;
   selectedItem: Item;
+  addANewItem: boolean;
   constructor(private recipesService: RecipesService) {
     this.recipe = new Recipe();
     this.recipe.ingredients = new Array<Ingredient>();
     this.recipe.steps = new Array<String>();
     this.newIngredient = new Ingredient();
+    this.addANewItem = false;
     this.getItems();
   }
 
@@ -32,6 +34,8 @@ export class RecipeCreateComponent {
     this.newIngredient.item = this.selectedItem;
     this.recipe.ingredients.push(this.newIngredient);
     this.newIngredient = new Ingredient();
+    this.selectedItem = new Item(null, 'selectItem');
+    this.getItems();
   }
 
   addItem(item: Item): void {
@@ -49,6 +53,14 @@ export class RecipeCreateComponent {
   }
   addNewItem(itemName: string) {
     this.addItem(new Item(null, itemName));
+  }
+
+  toggleNewItem() {
+    if (this.addANewItem) {
+      this.addANewItem = false;
+    } else {
+      this.addANewItem = true;
+    }
   }
 
 }

@@ -9,16 +9,23 @@
       {{ingredient.item.name}} | {{ingredient.quantity}} | {{ingredient.unit}}
     </li>
   </ol>
-  <select [(ngModel)]="selectedItem">
-    <option *ngFor="let item of itemList" [ngValue]="item">{{ item.name }}</option>
-  </select>
-<!--  <input #newItem
-          (keyup.enter)="addNewItem(newItem.value)"
-          (blur)="addNewItem(newItem.value); newItem.value=''">-->
-  <input [(ngModel)]="newIngredient.quantity">
-  <input [(ngModel)]="newIngredient.unit">
+  <div *ngIf="addANewItem">
+    <input #newItem
+           (keyup.enter)="addItem(newItem.value); toggleNewItem()"
+           (blur)="newItem.value=''">
+  </div>
+  <div>
+    <button *ngIf="!addANewItem" (click)="toggleNewItem()">Add a new Item</button>
+  </div>
+  <div>
+    <select [(ngModel)]="selectedItem">
+      <option *ngFor="let item of itemList" [ngValue]="item">{{ item.name }}</option>
+    </select>
 
-  <button (click)="addIngredient()">Add</button>
+    <input [(ngModel)]="newIngredient.quantity">
+    <input [(ngModel)]="newIngredient.unit">
+  </div>
+  <button (click)="addIngredient()">Add this Ingredient</button>
 </div>
 <div>
   <label>Steps: </label>
@@ -26,14 +33,32 @@
     <li *ngFor="let step of recipe.steps">{{step}}</li>
   </ol>
   <input #newStep
-         (keyup.enter)="addStep(newStep.value)"
-         (blur)="addStep(newStep.value); newStep.value='' ">
+         (keyup.enter)="addStep(newStep.value); newStep.value='' ">
 
-  <button (click)="addStep(newStep.value)">Add</button>
+  <button (click)="addStep(newStep.value); newStep.value=''">Add this Step</button>
+</div>
+<h6>Category</h6>
+<div *ngIf="addANewCategory">
+  <select [ngModel]=selectedType>
+    <option value=0> Level </option>
+  </select>
+  <input #newCategory
+         (keyup.enter)="addCategory(newCategory.value, 0  ); toggleNewCategory()"
+         (blur)="newCategory.value=''">
+</div>
+<div>
+  <button *ngIf="!addANewCategory" (click)="toggleNewCategory()">Add a new Category</button>
 </div>
 <div>
   <label>Category: </label>
-  <input [(ngModel)]="recipe.category" />
+  <select [(ngModel)]="recipe.ctegory">
+    <option *ngFor="let category of categoryList" [ngValue]="category">{{ category.name }}</option>
+  </select>
+</div>
+  <h6>Description</h6>
+<div>
+  <label>Description: </label>
+  <input [(ngModel)]="recipe.description" />
 </div>
 <div>
   <button (click)="addRecipe(recipe)">Add</button>
